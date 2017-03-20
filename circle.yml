@@ -1,6 +1,6 @@
 machine:
   java:
-    version: oraclejdk8
+    version: 'oraclejdk8'
 
 general:
   branches:
@@ -8,4 +8,4 @@ general:
       - master
 test:
   override:
-    - mvn integration-test
+    - mvn test
