@@ -29,8 +29,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resourceDirectory>src/main/java</resourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
     </build>
 
 </project>
