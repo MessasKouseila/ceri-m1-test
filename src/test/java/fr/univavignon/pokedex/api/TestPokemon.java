@@ -9,7 +9,7 @@ public class TestPokemon {
 	@Test
 	public void testPrintHelloWorld() {
 
-		assertEquals("Hello World", "Hello World");
+		assertEquals("Hello World dd", "Hello World");
 
 	}
 
