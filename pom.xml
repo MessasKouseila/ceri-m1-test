@@ -19,6 +19,7 @@
 
     <build>
         <plugins>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -26,9 +27,16 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <testSourceDirectory>src/test/java</testSourceDirectory>
                 </configuration>
             </plugin>
-            </plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

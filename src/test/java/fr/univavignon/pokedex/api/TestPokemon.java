@@ -1,4 +1,4 @@
-package Test;
+package fr.univavignon.pokedex.api;
 
 import static org.junit.Assert.*;
 
