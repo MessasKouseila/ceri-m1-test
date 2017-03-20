@@ -1,6 +1,7 @@
 package fr.univavignon.pokedex.api;
 
 /**
+ * ici
  * Pokemon POJO.
  * 
  * @author fv
