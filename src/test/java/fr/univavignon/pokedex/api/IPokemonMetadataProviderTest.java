@@ -1,52 +1,36 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
-public class IPokemonMetadataProviderTest {
+public final class IPokemonMetadataProviderTest {
 	
-	public PokemonMetadata Metadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
-	public PokemonMetadata Metadata2 = new PokemonMetadata(133, "Aquali", 186, 168, 260);
-
-	public IPokemonMetadataProvider iPokMetaProvider1;
+	@Mock private IPokemonMetadataProvider iPokMetaProvider1;
+	private PokemonMetadata Metadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
+	private PokemonMetadata Metadata2 = new PokemonMetadata(133, "Aquali", 186, 168, 260);
 	
-	
-
 	@Test
 	public void getPokemonMetadataTest() throws PokedexException {
-		
-		iPokMetaProvider1 = getIPokemonMetadataProvider(0);
 		assertEquals(iPokMetaProvider1.getPokemonMetadata(0), Metadata);
-		
-		iPokMetaProvider1 = getIPokemonMetadataProvider(133);
 		assertEquals(iPokMetaProvider1.getPokemonMetadata(133), Metadata2);
 	}
 
-	@Test
-	public void execptionIndex() {
-		try {
-			iPokMetaProvider1 = getIPokemonMetadataProvider(-1);
-			iPokMetaProvider1.getPokemonMetadata(-1);
-		} catch (PokedexException e) {
-			assertEquals(e.getMessage(), "Index inexistant");
-		}
-		
+	@Test(expected = PokedexException.class)
+	public void execptionIndex() throws PokedexException {
+		iPokMetaProvider1.getPokemonMetadata(-1);	
 	}
 	
-	
-	public IPokemonMetadataProvider getIPokemonMetadataProvider(int index) throws PokedexException {
-		
-		IPokemonMetadataProvider iPokMetaProvider;
-		
-		iPokMetaProvider = Mockito.mock(IPokemonMetadataProvider.class);
-		if (index == 0)
-			Mockito.when(iPokMetaProvider.getPokemonMetadata(0)).thenReturn(Metadata);
-		if (index == 133)
-			Mockito.when(iPokMetaProvider.getPokemonMetadata(133)).thenReturn(Metadata2);
-		if (index < 0)
-			Mockito.when(iPokMetaProvider.getPokemonMetadata(0)).thenThrow(new PokedexException("Index inexistant"));
-		return iPokMetaProvider;
+	@Before
+	public void setUp() throws PokedexException {
+		MockitoAnnotations.initMocks(this);
+		Mockito.when(iPokMetaProvider1.getPokemonMetadata(0)).thenReturn(Metadata);
+		Mockito.when(iPokMetaProvider1.getPokemonMetadata(133)).thenReturn(Metadata2);
+		Mockito.when(iPokMetaProvider1.getPokemonMetadata(-1)).thenThrow(new PokedexException("Index inexistant"));
 	}
 	
 }
