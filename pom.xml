@@ -27,14 +27,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <testSourceDirectory>src/test/java</testSourceDirectory>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.8</version>
             </plugin>
         </plugins>
     </build>
