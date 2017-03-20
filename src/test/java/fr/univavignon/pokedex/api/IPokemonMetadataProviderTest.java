@@ -22,12 +22,17 @@ public class IPokemonMetadataProviderTest {
 		iPokMetaProvider1 = getIPokemonMetadataProvider(133);
 		assertEquals(iPokMetaProvider1.getPokemonMetadata(133), Metadata2);
 	}
-	/*
-	@Test (expected=PokedexException.class)
-	public void execptionIndex() throws PokedexException {
-		iPokMetaProvider1 = getIPokemonMetadataProvider(-1);
-		iPokMetaProvider1.getPokemonMetadata(-1);
-	}*/
+
+	@Test
+	public void execptionIndex() {
+		try {
+			iPokMetaProvider1 = getIPokemonMetadataProvider(-1);
+			iPokMetaProvider1.getPokemonMetadata(-1);
+		} catch (PokedexException e) {
+			assertEquals(e.getMessage(), "Index inexistant");
+		}
+		
+	}
 	
 	
 	public IPokemonMetadataProvider getIPokemonMetadataProvider(int index) throws PokedexException {
@@ -40,7 +45,7 @@ public class IPokemonMetadataProviderTest {
 		if (index == 133)
 			Mockito.when(iPokMetaProvider.getPokemonMetadata(133)).thenReturn(Metadata2);
 		if (index < 0)
-			Mockito.when(iPokMetaProvider.getPokemonMetadata(0)).thenThrow(new PokedexException("Index inexistatn"));
+			Mockito.when(iPokMetaProvider.getPokemonMetadata(0)).thenThrow(new PokedexException("Index inexistant"));
 		return iPokMetaProvider;
 	}
 	
