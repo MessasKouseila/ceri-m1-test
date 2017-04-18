@@ -15,7 +15,20 @@ public class IPokedexTest {
 		pokedex = getPokedex();
 		assertEquals(pokedex.size(), 0);
 	}
-	
+	@Test
+	public void addPokemon() {
+
+	}
+	@Test
+	public void getPokemon() {
+
+	}
+	@Test
+	public void getPokemons(){
+
+	}
+
+
 	public IPokedex getPokedex() {
 		pokedex = Mockito.mock(IPokedex.class);
 		Mockito.when(pokedex.size()).thenReturn(0);
