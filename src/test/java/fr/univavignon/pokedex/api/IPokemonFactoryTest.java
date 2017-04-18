@@ -41,16 +41,4 @@ public class IPokemonFactoryTest {
         MockitoAnnotations.initMocks(this);
         Mockito.when(IPokemonFactory1.createPokemon(0, 613, 64, 4000, 4)).thenReturn(bulbi);
     }
-
-	/*
-	 * 
-	 * 	 * @param index Pokemon index.
-	 * @param cp Pokemon CP.
-	 * @param hp Pokemon HP.
-	 * @param dust Required dust for upgrading pokemon.
-	 * @param candy Required candy for upgrading pokemon.
-	 * @return Created pokemon instance.
-	 *
-	Pokemon createPokemon(int index, int cp, int hp, int dust, int candy);*/
-
 }
