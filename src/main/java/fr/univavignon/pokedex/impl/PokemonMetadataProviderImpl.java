@@ -1,4 +1,4 @@
-package fr.univavignon.pokedex.Impl;
+package fr.univavignon.pokedex.impl;
 
 import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
 import fr.univavignon.pokedex.api.PokedexException;
@@ -46,7 +46,7 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         if (index < 0 || index > 150) {
-            throw new PokedexException("Index out Bounds");
+            throw new PokedexException("Index out of Bounds");
         }
         try {
             JSONObject tmp = data.getJSONObject(index);

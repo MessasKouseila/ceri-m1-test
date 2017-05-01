@@ -1,4 +1,4 @@
-package fr.univavignon.pokedex.Impl;
+package fr.univavignon.pokedex.impl;
 
 import fr.univavignon.pokedex.api.IPokedex;
 import fr.univavignon.pokedex.api.PokedexException;
