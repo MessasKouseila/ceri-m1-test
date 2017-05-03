@@ -15,7 +15,6 @@ import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMet
  */
 public class PokemonFactoryImpl implements IPokemonFactory{
 
-    private CalculatorIV cal;
     private static PokemonFactoryImpl instance = null;
 
     public static synchronized  PokemonFactoryImpl PokemonFactory() {
@@ -42,8 +41,7 @@ public class PokemonFactoryImpl implements IPokemonFactory{
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws IOException, PokedexException {
 
         PokemonMetadata tmp =  PokemonMetadataProvider().getPokemonMetadata(index);
-        cal = new CalculatorIV("chrome");
-        int tmp_iv = cal.calculateIV(tmp.getName(), cp, hp, dust);
+        int tmp_iv = new CalculatorIV("chrome").calculateIV(tmp.getName(), cp, hp, dust);
 
         return new Pokemon(index,
                 tmp.getName(),

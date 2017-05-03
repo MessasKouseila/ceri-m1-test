@@ -19,7 +19,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class CalculatorIV {
 
     private static final String  PATH_IV = "https://pokeassistant.com/main/ivcalculator?locale=en";
-    WebDriver driver;
+    private WebDriver driver;
     /**
      *
      * @param browser nom du navigateur à utiliser
@@ -37,7 +37,9 @@ public class CalculatorIV {
             case "edge":
                 EdgeDriverManager.getInstance().setup();
                 driver = new EdgeDriver();
-
+            default:
+                FirefoxDriverManager.getInstance().setup();
+                driver = new FirefoxDriver();
         }
     }
     public int calculateIV(String name, int cp, int hp, int dust) {
