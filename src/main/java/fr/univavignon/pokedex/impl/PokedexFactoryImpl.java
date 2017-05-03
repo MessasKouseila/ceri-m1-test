@@ -18,7 +18,7 @@ public class PokedexFactoryImpl implements IPokedexFactory {
 
     }
 
-    public static PokedexFactoryImpl PokedexFactory() {
+    public static PokedexFactoryImpl pokedexFactory() {
         if (instance == null) instance = new PokedexFactoryImpl();
         return instance;
     }

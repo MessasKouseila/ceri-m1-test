@@ -5,8 +5,8 @@ import fr.univavignon.pokedex.api.*;
 import java.io.IOException;
 import java.util.*;
 
-import static fr.univavignon.pokedex.impl.PokemonFactoryImpl.PokemonFactory;
-import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMetadataProvider;
+import static fr.univavignon.pokedex.impl.PokemonFactoryImpl.pokemonFactory;
+import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.pokemonMetadataProvider;
 
 /**
  * Created by kouceila on 19/04/17.
@@ -21,8 +21,8 @@ public class PokedexImpl implements IPokedex {
     public PokedexImpl() throws IOException {
         // 151 pokemons pour la 1er generation
         this.setListOfpokemon(new ArrayList<Pokemon>(151));
-        this.setPokemonfactory(PokemonFactory());
-        this.setProvider(PokemonMetadataProvider());
+        this.setPokemonfactory(pokemonFactory());
+        this.setProvider(pokemonMetadataProvider());
     }
 
     public PokedexImpl(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonfactory) throws IOException {

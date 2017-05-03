@@ -32,7 +32,7 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
         }
 
     }
-    public static synchronized PokemonMetadataProviderImpl PokemonMetadataProvider() throws IOException {
+    public static synchronized PokemonMetadataProviderImpl pokemonMetadataProvider() throws IOException {
         if (instance == null) {
             instance = new PokemonMetadataProviderImpl();
         }

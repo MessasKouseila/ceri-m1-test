@@ -5,7 +5,7 @@ import fr.univavignon.pokedex.api.IPokemonFactoryTest;
 
 import java.io.IOException;
 
-import static fr.univavignon.pokedex.impl.PokemonFactoryImpl.PokemonFactory;
+import static fr.univavignon.pokedex.impl.PokemonFactoryImpl.pokemonFactory;
 
 /**
  * Created by kouceila on 03/05/17.
@@ -13,6 +13,6 @@ import static fr.univavignon.pokedex.impl.PokemonFactoryImpl.PokemonFactory;
 public class IPokemonFactoryImplTest extends IPokemonFactoryTest {
     @Override
     public IPokemonFactory getProvider() throws IOException {
-        return PokemonFactory();
+        return pokemonFactory();
     }
 }

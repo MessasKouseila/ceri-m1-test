@@ -8,7 +8,7 @@ import fr.univavignon.pokedex.api.PokemonMetadata;
 
 import java.io.IOException;
 
-import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMetadataProvider;
+import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.pokemonMetadataProvider;
 
 /**
  * Created by kouceila on 19/04/17.
@@ -17,7 +17,7 @@ public class PokemonFactoryImpl implements IPokemonFactory{
 
     private static PokemonFactoryImpl instance = null;
 
-    public static synchronized  PokemonFactoryImpl PokemonFactory() {
+    public static synchronized  PokemonFactoryImpl pokemonFactory() {
         if (instance == null) {
             instance = new PokemonFactoryImpl();
         }
@@ -40,7 +40,7 @@ public class PokemonFactoryImpl implements IPokemonFactory{
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws IOException, PokedexException {
 
-        PokemonMetadata tmp =  PokemonMetadataProvider().getPokemonMetadata(index);
+        PokemonMetadata tmp =  pokemonMetadataProvider().getPokemonMetadata(index);
         int tmp_iv = new CalculatorIV("chrome").calculateIV(tmp.getName(), cp, hp, dust);
 
         return new Pokemon(index,

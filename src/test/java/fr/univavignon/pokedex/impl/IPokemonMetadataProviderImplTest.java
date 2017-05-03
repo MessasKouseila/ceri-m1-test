@@ -5,7 +5,7 @@ import fr.univavignon.pokedex.api.IPokemonMetadataProviderTest;
 
 import java.io.IOException;
 
-import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMetadataProvider;
+import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.pokemonMetadataProvider;
 
 /**
  * Created by kouceila on 19/04/17.
@@ -13,6 +13,6 @@ import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMet
 public class IPokemonMetadataProviderImplTest extends IPokemonMetadataProviderTest{
     @Override
     public IPokemonMetadataProvider getProvider() throws IOException {
-        return PokemonMetadataProvider();
+        return pokemonMetadataProvider();
     }
 }
