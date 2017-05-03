@@ -1,12 +1,12 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import static org.junit.Assert.assertEquals;
 
 public class IPokedexFactoryTest {
 
@@ -15,11 +15,14 @@ public class IPokedexFactoryTest {
     private IPokedex unPokedex;
     @Mock
     private IPokedexFactory IPokedexFactory1;
-    //IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory);
+
+    public IPokedexFactory getProvider() {
+        return IPokedexFactory1;
+    }
 
     @Test
     public void createPokedex() {
-        assertEquals(IPokedexFactory1.createPokedex(metadataProvider, pokemonFactory), unPokedex);
+        assertEquals(unPokedex, getProvider().createPokedex(metadataProvider, pokemonFactory));
     }
 
     @Before

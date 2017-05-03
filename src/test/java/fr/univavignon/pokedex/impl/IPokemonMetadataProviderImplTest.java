@@ -5,12 +5,14 @@ import fr.univavignon.pokedex.api.IPokemonMetadataProviderTest;
 
 import java.io.IOException;
 
+import static fr.univavignon.pokedex.impl.PokemonMetadataProviderImpl.PokemonMetadataProvider;
+
 /**
  * Created by kouceila on 19/04/17.
  */
-public class PokemonMetadataProviderImplTest extends IPokemonMetadataProviderTest{
+public class IPokemonMetadataProviderImplTest extends IPokemonMetadataProviderTest{
     @Override
     public IPokemonMetadataProvider getProvider() throws IOException {
-        return new PokemonMetadataProviderImpl();
+        return PokemonMetadataProvider();
     }
 }

@@ -20,10 +20,11 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
 
     private static final String DATA_PATH = "https://raw.githubusercontent.com/PokemonGo-Enhanced/node-pokemongo-data/master/data.json";
     private static JSONArray data;
-    private static  final String name = "Identifier";
-    private static  final String attack = "BaseAttack";
-    private static  final String defense = "BaseDefense";
-    private static  final String staminia = "BaseStamina";
+    private static  final String NAME = "Identifier";
+    private static  final String ATTAQUE = "BaseAttack";
+    private static  final String DEFENSE = "BaseDefense";
+    private static  final String STAMINIA = "BaseStamina";
+    private static PokemonMetadataProviderImpl instance = null;
 
     private void getData() throws IOException {
         try (InputStream is = new URL(DATA_PATH).openStream()){
@@ -31,8 +32,14 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
         }
 
     }
+    public static synchronized PokemonMetadataProviderImpl PokemonMetadataProvider() throws IOException {
+        if (instance == null) {
+            instance = new PokemonMetadataProviderImpl();
+        }
+        return instance;
+    }
 
-    public PokemonMetadataProviderImpl() throws IOException {
+    private PokemonMetadataProviderImpl() throws IOException {
         this.getData();
     }
     /**
@@ -51,7 +58,7 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
         try {
             JSONObject tmp = data.getJSONObject(index);
             if (tmp != null) {
-                return new PokemonMetadata(index, tmp.getString(name), tmp.getInt(attack), tmp.getInt(defense), tmp.getInt(staminia));
+                return new PokemonMetadata(index, tmp.getString(NAME), tmp.getInt(ATTAQUE), tmp.getInt(DEFENSE), tmp.getInt(STAMINIA));
             }
         } catch (JSONException e) {
             return null;

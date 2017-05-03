@@ -23,17 +23,17 @@ public class IPokemonMetadataProviderTest {
 
 	@Test
 	public void getPokemonMetadataTest() throws PokedexException, IOException {
-		assertEquals(getProvider().getPokemonMetadata(0).getIndex(), Metadata.getIndex());
-		assertEquals(getProvider().getPokemonMetadata(0).getName(), Metadata.getName());
-		assertEquals(getProvider().getPokemonMetadata(0).getAttack(), Metadata.getAttack());
-		assertEquals(getProvider().getPokemonMetadata(0).getDefense(), Metadata.getDefense());
-		assertEquals(getProvider().getPokemonMetadata(0).getStamina(), Metadata.getStamina());
+		assertEquals(Metadata.getIndex(), getProvider().getPokemonMetadata(0).getIndex());
+		assertEquals(Metadata.getName(), getProvider().getPokemonMetadata(0).getName());
+		assertEquals(Metadata.getAttack(), getProvider().getPokemonMetadata(0).getAttack());
+		assertEquals(Metadata.getDefense(), getProvider().getPokemonMetadata(0).getDefense());
+		assertEquals(Metadata.getStamina(), getProvider().getPokemonMetadata(0).getStamina());
 		
-		assertEquals(getProvider().getPokemonMetadata(133).getIndex(), Metadata2.getIndex());
-		assertEquals(getProvider().getPokemonMetadata(133).getName(), Metadata2.getName());
-		assertEquals(getProvider().getPokemonMetadata(133).getAttack(), Metadata2.getAttack());
-		assertEquals(getProvider().getPokemonMetadata(133).getDefense(), Metadata2.getDefense());
-		assertEquals(getProvider().getPokemonMetadata(133).getStamina(), Metadata2.getStamina());
+		assertEquals(Metadata2.getIndex(), getProvider().getPokemonMetadata(133).getIndex());
+		assertEquals(Metadata2.getName(), getProvider().getPokemonMetadata(133).getName());
+		assertEquals(Metadata2.getAttack(), getProvider().getPokemonMetadata(133).getAttack());
+		assertEquals(Metadata2.getDefense(), getProvider().getPokemonMetadata(133).getDefense());
+		assertEquals(Metadata2.getStamina(), getProvider().getPokemonMetadata(133).getStamina());
 	}
 
 	@Test(expected = PokedexException.class)
