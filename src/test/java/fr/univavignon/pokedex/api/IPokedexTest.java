@@ -1,10 +1,9 @@
 package fr.univavignon.pokedex.api;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.doAnswer;
+
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;

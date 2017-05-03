@@ -1,5 +1,7 @@
 package fr.univavignon.pokedex.api;
 
+import java.io.IOException;
+
 /**
  * Factory interface for class that aims to create IPokedex instance.
  * 
@@ -15,6 +17,6 @@ public interface IPokedexFactory {
 	 * @param pokemonFactory Pokemon factory the created pokedex will use.
 	 * @return Created pokedex instance.
 	 */
-	IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory);
+	IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) throws IOException;
 	
 }

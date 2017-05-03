@@ -25,6 +25,14 @@ public class PokedexImpl implements IPokedex {
         this.setProvider(PokemonMetadataProvider());
     }
 
+    public PokedexImpl(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonfactory) throws IOException {
+        // 151 pokemons pour la 1er generation
+        this.setListOfpokemon(new ArrayList<Pokemon>(151));
+        this.setPokemonfactory(pokemonfactory);
+        this.setProvider(metadataProvider);
+    }
+
+
     // ---- GETTERS ---- //
     public IPokemonFactory getPokemonfactory() {
         return this.pokemonfactory;
