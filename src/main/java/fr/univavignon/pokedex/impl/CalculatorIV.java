@@ -15,13 +15,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class CalculatorIV {
 
     private static final String  PATH_IV = "https://pokeassistant.com/main/ivcalculator?locale=en";
-    private WebDriver driver;
 
-    public CalculatorIV() {
-        ChromeDriverManager.getInstance().setup();
-        driver = new ChromeDriver();
-    }
     public int calculateIV(String name, int cp, int hp, int dust) {
+
+        ChromeDriverManager.getInstance().setup();
+        WebDriver driver = new ChromeDriver();
 
         driver.get(PATH_IV);
         // nom de pokemon
@@ -39,7 +37,6 @@ public class CalculatorIV {
         try {
             Thread.sleep(800);
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         // on recupère l'iv max calculé
         String res = driver.findElement(By.xpath("//*[@id=\"possibleCombinationsStringmax\"]//b")).getText();
