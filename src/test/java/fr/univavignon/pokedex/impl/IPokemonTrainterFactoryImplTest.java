@@ -1,7 +1,6 @@
 package fr.univavignon.pokedex.impl;
 
 
-import fr.univavignon.pokedex.api.IPokedexFactory;
 import fr.univavignon.pokedex.api.IPokemonTrainerFactory;
 import fr.univavignon.pokedex.api.IPokemonTrainerFactoryTest;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import static fr.univavignon.pokedex.impl.PokemonTrainterFactoryImpl.pokemonTrai
  * Created by kouceila on 04/05/17.
  */
 public class IPokemonTrainterFactoryImplTest extends IPokemonTrainerFactoryTest {
-    private IPokemonTrainerFactory instance = null;
     @Override
     public IPokemonTrainerFactory getProvider() {
         return pokemonTrainterFactory();

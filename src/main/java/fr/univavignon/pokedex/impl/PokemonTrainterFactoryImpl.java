@@ -4,7 +4,6 @@ import fr.univavignon.pokedex.api.IPokedexFactory;
 import fr.univavignon.pokedex.api.IPokemonTrainerFactory;
 import fr.univavignon.pokedex.api.PokemonTrainer;
 import fr.univavignon.pokedex.api.Team;
-import org.junit.Before;
 
 import java.io.IOException;
 
