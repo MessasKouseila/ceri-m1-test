@@ -11,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.io.IOException;
+
 public class IPokemonTrainerFactoryTest {
 
     @Mock
@@ -26,21 +28,30 @@ public class IPokemonTrainerFactoryTest {
         return IPokemonTrainerFactory1;
     }
 
+
+
     @Test
-    public void createTrainerTest() {
-        PokemonTrainer tmp = getProvider().createTrainer("sacha", Team.VALOR,  pokdexFactory);
+    public void createTrainerTest() throws IOException {
+        PokemonTrainer tmp = getProvider().createTrainer("sacha", Team.VALOR,  getPokdexFactory());
         assertEquals("sacha", tmp.getName());
         assertEquals(0, tmp.getPokedex().getPokemons().size());
         assertEquals(Team.VALOR, tmp.getTeam());
     }
 
     @Before
-    public void setUp() throws PokedexException {
+    public void setUp() throws PokedexException, IOException {
         MockitoAnnotations.initMocks(this);
         PokemonTrainer pokTrain = new PokemonTrainer("sacha", Team.VALOR,  pokedex);
         Mockito.when(IPokemonTrainerFactory1.createTrainer("sacha", Team.VALOR,  pokdexFactory)).thenReturn(pokTrain);
     }
+
+    //----------GETTERS AND SETTERS ----------------------/////
+
+    public IPokedexFactory getPokdexFactory() {
+        return pokdexFactory;
+    }
+
+    public void setPokdexFactory(IPokedexFactory pokdexFactory) {
+        this.pokdexFactory = pokdexFactory;
+    }
 }
-
-
-/*PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory);*/

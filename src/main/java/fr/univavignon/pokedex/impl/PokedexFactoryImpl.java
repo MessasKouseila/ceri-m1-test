@@ -10,14 +10,16 @@ import java.io.IOException;
 /**
  * Created by kouceila on 03/05/17.
  */
-public class PokedexFactoryImpl implements IPokedexFactory {
 
+public class PokedexFactoryImpl implements IPokedexFactory {
+    // l'instance de la factory pour utilisé le pattern singleton
     private static PokedexFactoryImpl instance = null;
 
     private PokedexFactoryImpl() {
 
     }
 
+    // fonction qui permet de recupere l'instance
     public static PokedexFactoryImpl pokedexFactory() {
         if (instance == null) instance = new PokedexFactoryImpl();
         return instance;

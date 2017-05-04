@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 
 /**
- *
+ * permet le calcule de l'iv d'un pokemon via selenium webDrvier
  */
 public class CalculatorIV {
 
@@ -26,9 +26,13 @@ public class CalculatorIV {
         driver.get(PATH_IV);
         // nom de pokemon
         driver.findElement(By.xpath("//*[@id=\"search_pokemon_name\"]")).sendKeys(name);
+        // init data
         driver.findElement(By.xpath("//*[@class=\"tt-dataset tt-dataset-0\"]")).click();
+        // cp du pokemon
         driver.findElement(By.xpath("//*[@id=\"search_cp\"]")).sendKeys(String.valueOf(cp));
+        // hp
         driver.findElement(By.xpath("//*[@id=\"search_hp\"]")).sendKeys(String.valueOf(hp));
+        // dust
         driver.findElement(By.xpath("//*[@id=\"search_dust\"]")).sendKeys(String.valueOf(dust));
         driver.findElement(By.xpath("//*[@id=\"calculatebtn\"]")).click();
         // On attends le calcule
