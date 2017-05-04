@@ -97,6 +97,7 @@ public class IPokedexTest {
         assertEquals(bulbi.getCp(), tmp.getCp());
         assertEquals(bulbi.getHp(), tmp.getHp());
         assertEquals(bulbi.getDust(), tmp.getDust());
+        assertEquals(bulbi.getCandy(), tmp.getCandy());
         assertEquals(bulbi.getIv(), tmp.getIv(), 0);
     }
 

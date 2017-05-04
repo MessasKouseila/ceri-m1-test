@@ -61,7 +61,7 @@ public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider {
                 return new PokemonMetadata(index, tmp.getString(NAME), tmp.getInt(ATTAQUE), tmp.getInt(DEFENSE), tmp.getInt(STAMINIA));
             }
         } catch (JSONException e) {
-            return null;
+            throw new PokedexException("impossible de trouver le pokemon");
         }
 
         return null;
