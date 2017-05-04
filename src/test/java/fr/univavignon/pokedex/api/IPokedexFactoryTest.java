@@ -23,11 +23,11 @@ public class IPokedexFactoryTest {
     private IPokedex unPokedex;
 
 
+
     public IPokedexFactory getProvider() {
 
         return IPokedexFactory1;
     }
-
     //---- GETTERS AND SETTERS -----//
 
     public IPokemonMetadataProvider getMetadataProvider() {
