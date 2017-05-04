@@ -22,10 +22,6 @@ public class IPokemonTrainerFactoryTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-    private PokemonTrainer pokTrain;
-
-
-
     public IPokemonTrainerFactory getProvider() {
         return IPokemonTrainerFactory1;
     }
@@ -41,7 +37,7 @@ public class IPokemonTrainerFactoryTest {
     @Before
     public void setUp() throws PokedexException {
         MockitoAnnotations.initMocks(this);
-        pokTrain = new PokemonTrainer("sacha", Team.VALOR,  pokedex);
+        PokemonTrainer pokTrain = new PokemonTrainer("sacha", Team.VALOR,  pokedex);
         Mockito.when(IPokemonTrainerFactory1.createTrainer("sacha", Team.VALOR,  pokdexFactory)).thenReturn(pokTrain);
     }
 }
