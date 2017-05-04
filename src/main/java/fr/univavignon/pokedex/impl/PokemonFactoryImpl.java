@@ -41,7 +41,7 @@ public class PokemonFactoryImpl implements IPokemonFactory{
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws IOException, PokedexException {
 
         PokemonMetadata tmp =  pokemonMetadataProvider().getPokemonMetadata(index);
-        int tmp_iv = new CalculatorIV("chrome").calculateIV(tmp.getName(), cp, hp, dust);
+        int tmp_iv = new CalculatorIV().calculateIV(tmp.getName(), cp, hp, dust);
 
         return new Pokemon(index,
                 tmp.getName(),

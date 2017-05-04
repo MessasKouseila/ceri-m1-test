@@ -20,27 +20,10 @@ public class CalculatorIV {
 
     private static final String  PATH_IV = "https://pokeassistant.com/main/ivcalculator?locale=en";
     private WebDriver driver;
-    /**
-     *
-     * @param browser nom du navigateur à utiliser
-     */
-    public CalculatorIV(String browser) {
-        switch (browser) {
-            case "firefox":
-                FirefoxDriverManager.getInstance().setup();
-                driver = new FirefoxDriver();
-                break;
-            case "chrome":
-                ChromeDriverManager.getInstance().setup();
-                driver = new ChromeDriver();
-                break;
-            case "edge":
-                EdgeDriverManager.getInstance().setup();
-                driver = new EdgeDriver();
-            default:
-                FirefoxDriverManager.getInstance().setup();
-                driver = new FirefoxDriver();
-        }
+
+    public CalculatorIV() {
+        ChromeDriverManager.getInstance().setup();
+        driver = new ChromeDriver();
     }
     public int calculateIV(String name, int cp, int hp, int dust) {
 

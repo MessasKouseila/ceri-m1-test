@@ -52,6 +52,18 @@ public class IPokedexTest {
             100
     );
 
+    private Pokemon Arbok = new Pokemon(3,
+            "Arbok",
+            166,
+            166,
+            120,
+            118,
+            39,
+            5000,
+            4,
+            100
+    );
+
 
     public IPokedex getProvider() throws IOException {
         return IPokedex1;
@@ -104,6 +116,49 @@ public class IPokedexTest {
         assertEquals(listPokemons, tmp);
     }
 
+    @Test
+    public void getPokemonMetadataTest() throws IOException, PokedexException {
+        PokemonMetadata metaData_1 = getProvider().getPokemonMetadata(0);
+
+        assertEquals(0, metaData_1.getIndex());
+        assertEquals("Bulbasaur", metaData_1.getName());
+        assertEquals(126, metaData_1.getAttack());
+        assertEquals(126, metaData_1.getDefense());
+        assertEquals(90, metaData_1.getStamina());
+
+        PokemonMetadata metaData_2 = getProvider().getPokemonMetadata(133);
+
+        assertEquals(133, metaData_2.getIndex());
+        assertEquals("Vaporeon", metaData_2.getName());
+        assertEquals(186, metaData_2.getAttack());
+        assertEquals(168, metaData_2.getDefense());
+        assertEquals(260, metaData_2.getStamina());
+
+    }
+
+    @Test
+    public void getPokemonsComparatorTest() throws IOException, PokedexException {
+
+        // list ordonne via l'indexe
+        getProvider().addPokemon(create(bulbi));
+        getProvider().addPokemon(create(aquali));
+        getProvider().addPokemon(create(Arbok));
+
+        List<Pokemon> listOrderedIndex = getProvider().getPokemons(PokemonComparators.INDEX);
+        List<Pokemon> listOrderedName = getProvider().getPokemons(PokemonComparators.NAME);
+        // on teste que le pokemon retourne est bien le bon
+        assertEquals(bulbi.getName(), listOrderedIndex.get(0).getName());
+        assertEquals(Arbok.getName(), listOrderedIndex.get(1).getName());
+        assertEquals(aquali.getName(), listOrderedIndex.get(2).getName());
+
+
+        assertEquals(Arbok.getName(), listOrderedName.get(0).getName());
+        assertEquals(bulbi.getName(), listOrderedName.get(1).getName());
+        assertEquals(aquali.getName(), listOrderedName.get(2).getName());
+
+    }
+
+
     @Before
     public void setUp() throws PokedexException, IOException {
 
@@ -114,6 +169,7 @@ public class IPokedexTest {
 
         Mockito.when(IPokedex1.getPokemon(0)).thenReturn(bulbi);
         Mockito.when(IPokedex1.getPokemon(1)).thenReturn(aquali);
+        Mockito.when(IPokedex1.getPokemon(2)).thenReturn(Arbok);
         Mockito.when(IPokedex1.getPokemon(151)).thenThrow(new PokedexException("aucun pokem trouver à cet indexe"));
 
         size = 0;
@@ -138,7 +194,31 @@ public class IPokedexTest {
         Mockito.when(IPokedex1.addPokemon(aquali)).thenAnswer(theIndexe);
 
 
+
+        Mockito.when(IPokedex1.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbasaur", 126, 126, 90));
+        Mockito.when(IPokedex1.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Vaporeon", 186, 168, 260));
+
+
+
         Mockito.when(IPokedex1.getPokemons()).thenReturn(listPokemons);
+
+        List<Pokemon> orderByIndex = new ArrayList<Pokemon>(151);
+        // le bon ordre par indexe
+        orderByIndex.add(IPokedex1.getPokemon(0));
+        orderByIndex.add(IPokedex1.getPokemon(2));
+        orderByIndex.add(IPokedex1.getPokemon(1));
+
+
+
+        List<Pokemon> orderByName = new ArrayList<Pokemon>(151);
+        // le bon ordre par nom
+        orderByName.add(IPokedex1.getPokemon(2));
+        orderByName.add(IPokedex1.getPokemon(0));
+        orderByName.add(IPokedex1.getPokemon(1));
+
+
+        Mockito.when(IPokedex1.getPokemons(PokemonComparators.INDEX)).thenReturn(orderByIndex);
+        Mockito.when(IPokedex1.getPokemons(PokemonComparators.NAME)).thenReturn(orderByName);
 
     }
 
